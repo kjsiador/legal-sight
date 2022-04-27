@@ -3,7 +3,7 @@ package com.legalsight.speech.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.h2.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.legalsight.speech.dto.SearchSpeechRequestDto;
 
@@ -16,8 +16,8 @@ public class DateRangeRequiredValidator implements ConstraintValidator<DateRange
 	public boolean isValid(SearchSpeechRequestDto value, ConstraintValidatorContext context) {
 		boolean isValid = true;
 		
-		if(StringUtils.isNullOrEmpty(value.getStartDate()) && 
-				!StringUtils.isNullOrEmpty(value.getEndDate())) {
+		if(StringUtils.isNotBlank(value.getStartDate()) && 
+				!StringUtils.isNotBlank(value.getEndDate())) {
 			
 			context.buildConstraintViolationWithTemplate( "startDate and endDate is required" )
 			.addPropertyNode("startDate").addConstraintViolation();
@@ -27,8 +27,8 @@ public class DateRangeRequiredValidator implements ConstraintValidator<DateRange
 			isValid = true;
 		}
 		
-		if(!StringUtils.isNullOrEmpty(value.getStartDate()) && 
-				StringUtils.isNullOrEmpty(value.getEndDate())) {
+		if(!StringUtils.isNotBlank(value.getStartDate()) && 
+				StringUtils.isNotBlank(value.getEndDate())) {
 			
 			context.buildConstraintViolationWithTemplate( "startDate and endDate is required" )
 			.addPropertyNode("startDate").addConstraintViolation();
