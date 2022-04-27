@@ -1,0 +1,5 @@
+INSERT INTO SPEECH(CONTENT, AUTHOR, SUBJECT, CREATED_AT)
+VALUES ('This is about Java', 'Java Guy', 'Java 101', '2022-04-27 01:30');
+
+INSERT INTO SPEECH(CONTENT, AUTHOR, SUBJECT, CREATED_AT)
+VALUES ('This is about Docker', 'Docker Guy', 'Docker 101', '2022-04-27 02:30');
