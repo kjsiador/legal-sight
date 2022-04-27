@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.legalsight.speech.repository.SpeechMapper" >
+
+    <resultMap id="allResult" type="com.legalsight.speech.dto.SpeechResponseItemDto" >
+        <id column="SPEECH_ID" property="speechId" />
+        <result column="CONTENT" property="speechContent" />
+        <result column="AUTHOR" property="author" />
+        <result column="SUBJECT" property="subject" />
+        <result column="CREATED_AT" property="createdAt" />
+    </resultMap>
+
+    <select id="viewAll" resultMap="allResult">
+        SELECT * FROM SPEECH
+    </select>
+    
+  	<resultMap id="searchResult" type="com.legalsight.speech.dto.SpeechResponseItemDto" >
+        <id column="SPEECH_ID" property="speechId" />
+        <result column="CONTENT" property="speechContent" />
+        <result column="AUTHOR" property="author" />
+        <result column="SUBJECT" property="subject" />
+        <result column="CREATED_AT" property="createdAt" />
+    </resultMap>
+    
+  	<select id="search" resultMap="searchResult">
+        SELECT * FROM SPEECH
+        <where>
+          	<if test="request.speechContent != null or request.speechContent != ''">
+        		CONTENT LIKE CONCAT('%',CONCAT(#{request.speechContent},'%'))
+        	</if>
+        	<if test="request.author != null or request.author != ''">
+        		AND AUTHOR LIKE CONCAT('%',CONCAT(#{request.author},'%'))
+        	</if>
+     		<if test="request.subject != null or request.subject != ''">
+        		AND SUBJECT LIKE CONCAT('%',CONCAT(#{request.subject},'%'))
+        	</if>
+        	<if test="request.startDate != null and request.endDate != null">
+        		AND CREATED_AT BETWEEN #{request.startDate} AND #{request.endDate}
+        	</if>
+        </where>
+    </select>
+    
+</mapper>
