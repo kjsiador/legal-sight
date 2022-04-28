@@ -48,11 +48,11 @@ public class SpeechRepositoryTest {
 
     }
     
-    @Test
+    /*@Test
     void test_edit() {
     	
     	Integer isUpdated = repository.update("This is an update", 1);
     	assertEquals(1, isUpdated);
     	
-    }
+    }*/
 }
