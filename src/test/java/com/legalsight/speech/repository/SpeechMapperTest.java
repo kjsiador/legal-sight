@@ -31,13 +31,13 @@ public class SpeechMapperTest {
     @Autowired
     private SpeechMapper mapper;
 
-    //@Test
+    @Test
     @DisplayName("repository is injected")
     void repositoryInjected() {
         assertNotNull(mapper);
     }
 
-    //@Test
+    @Test
     void test_viewAll() {
 
         final List<SpeechResponseItemDto> actual = mapper.viewAll();
@@ -45,7 +45,7 @@ public class SpeechMapperTest {
         assertFalse(CollectionUtils.isEmpty(actual));
     }
     
-    //@Test
+    @Test
     void test_searchByContent() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().speechContent("Docker").build();
@@ -55,7 +55,7 @@ public class SpeechMapperTest {
         assertFalse(CollectionUtils.isEmpty(actual));
     }
     
-    //@Test
+    @Test
     void test_searchByContentButNoData() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().speechContent("DockerX").build();
@@ -65,7 +65,7 @@ public class SpeechMapperTest {
         assertTrue(CollectionUtils.isEmpty(actual));
     }
     
-    //@Test
+    @Test
     void test_searchByAuthor() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().author("Docker").build();
@@ -75,7 +75,7 @@ public class SpeechMapperTest {
         assertFalse(CollectionUtils.isEmpty(actual));
     }
     
-    //@Test
+    @Test
     void test_searchByAuthorButNoData() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().author("DockerX").build();
@@ -85,7 +85,7 @@ public class SpeechMapperTest {
         assertTrue(CollectionUtils.isEmpty(actual));
     }
     
-    //@Test
+    @Test
     void test_searchBySubject() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().subject("Docker").build();
@@ -96,7 +96,7 @@ public class SpeechMapperTest {
     }
     
     
-    //@Test
+    @Test
     void test_searchBySubjectButNoData() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().subject("DockerX").build();
@@ -106,7 +106,7 @@ public class SpeechMapperTest {
         assertTrue(CollectionUtils.isEmpty(actual));
     }
     
-    //@Test
+    @Test
     void test_searchByDate() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().startDate("2022-04-27 02:00")
@@ -117,7 +117,7 @@ public class SpeechMapperTest {
         assertFalse(CollectionUtils.isEmpty(actual));
     }
     
-    //@Test
+    @Test
     void test_searchByDateOutOfRange() {
     	
     	SearchSpeechRequestDto request = SearchSpeechRequestDto.builder().startDate("2022-04-27 12:00")
