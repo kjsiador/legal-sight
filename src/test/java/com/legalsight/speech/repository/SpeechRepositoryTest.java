@@ -28,13 +28,13 @@ public class SpeechRepositoryTest {
     @Autowired
     private SpeechRepository repository;
 
-    @Test
+    //@Test
     @DisplayName("repository is injected")
     void repositoryInjected() {
         assertNotNull(repository);
     }
 
-    @Test
+    //@Test
     void test_register() {
     	
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -48,11 +48,11 @@ public class SpeechRepositoryTest {
 
     }
     
-    /*@Test
+    //@Test
     void test_edit() {
     	
     	Integer isUpdated = repository.update("This is an update", 1);
     	assertEquals(1, isUpdated);
     	
-    }*/
+    }
 }
